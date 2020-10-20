@@ -1,13 +1,11 @@
 # volto-sentry-rancher-config
 [![Releases](https://img.shields.io/github/v/release/eea/volto-sentry-rancher-config)](https://github.com/eea/volto-sentry-rancher-config/releases)
 
-[Volto](https://github.com/plone/volto) add-on
+[Volto](https://github.com/plone/volto) add-on to auto-configure Sentry from Rancher metadata
 
 ## Features
 
-###
-
-Demo GIF
+1. Auto-extract [Sentry options](https://docs.voltocms.com/deploying/sentry/#configuration-options) (tags, environment, etc.) from [Rancher Metadata](https://rancher.com/docs/rancher/v1.6/en/rancher-services/metadata-service/)
 
 ## Getting started
 
