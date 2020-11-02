@@ -35,11 +35,11 @@ if (typeof window === 'undefined') {
         extras: {
           logger: 'volto',
         },
-        logger: 'volto',
         environment: 'devel',
         serverName: os.hostname(),
         tags: {
           site: 'localhost',
+          logger: 'volto',
         },
       };
 
