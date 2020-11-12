@@ -1,5 +1,8 @@
 # volto-sentry-rancher-config
 [![Releases](https://img.shields.io/github/v/release/eea/volto-sentry-rancher-config)](https://github.com/eea/volto-sentry-rancher-config/releases)
+[![Pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto-addons%2Fvolto-sentry-rancher-config%2Fmaster&subject=master)](https://ci.eionet.europa.eu/view/Github/job/volto-addons/job/volto-sentry-rancher-config/job/master/display/redirect)
+[![Pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto-addons%2Fvolto-sentry-rancher-config%2Fdevelop&subject=develop)](https://ci.eionet.europa.eu/view/Github/job/volto-addons/job/volto-sentry-rancher-config/job/develop/display/redirect)
+
 
 [Volto](https://github.com/plone/volto) add-on to auto-configure Sentry from Rancher metadata
 
@@ -10,28 +13,31 @@
 ## Getting started
 
 1. Create new volto project if you don't already have one:
-    ```
-    $ npm install -g @plone/create-volto-app
-    $ create-volto-app my-volto-project
-    $ cd my-volto-project
-    ```
+
+   ```
+   $ npm install -g @plone/create-volto-app
+   $ create-volto-app my-volto-project
+   $ cd my-volto-project
+   ```
 
 1. Update `package.json`:
-    ``` JSON
-    "addons": [
-        "@eeacms/volto-sentry-rancher-config"
-    ],
 
-    "dependencies": {
-        "@eeacms/volto-sentry-rancher-config": "1.0.0"
-    }
-    ```
+   ```JSON
+   "addons": [
+       "@eeacms/volto-sentry-rancher-config"
+   ],
+
+   "dependencies": {
+       "@eeacms/volto-sentry-rancher-config": "1.0.0"
+   }
+   ```
 
 1. Install new add-ons and restart Volto:
-    ```
-    $ yarn
-    $ yarn start
-    ```
+
+   ```
+   $ yarn
+   $ yarn start
+   ```
 
 1. Go to http://localhost:3000
 
