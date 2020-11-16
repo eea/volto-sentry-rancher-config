@@ -8,7 +8,7 @@ const applyConfig = (config) => {
     tags: {
       site: 'localhost',
       logger: 'volto',
-      serverName: os.hostname(),
+      server_name: os.hostname(),
     },
   };
 
