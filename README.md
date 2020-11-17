@@ -15,12 +15,14 @@
 1. Create new volto project if you don't already have one:
 
    ```
-   $ npm install -g @plone/create-volto-app
-   $ create-volto-app my-volto-project
+   $ npm install -g yo @plone/generator-volto
+   $ yo @plone/volto my-volto-project --addon @eeacms/volto-sentry-rancher-config
+
    $ cd my-volto-project
+   $ yarn add -W @eeacms/volto-sentry-rancher-config
    ```
 
-1. Update `package.json`:
+1. If you already have a volto project, just update `package.json`:
 
    ```JSON
    "addons": [
@@ -28,7 +30,7 @@
    ],
 
    "dependencies": {
-       "@eeacms/volto-sentry-rancher-config": "1.0.0"
+       "@eeacms/volto-sentry-rancher-config": "^1.0.0"
    }
    ```
 
@@ -46,6 +48,13 @@
 ## How to contribute
 
 See [DEVELOP.md](https://github.com/eea/volto-sentry-rancher-config/blob/master/DEVELOP.md2).
+
+## Deploying with Docker/Rancher
+
+* See [Volto IMS](https://github.com/eea/eea.rancher.catalog/blob/master/templates/volto-ims) Rancher Catalog template for integration example:
+  * [docker-compose.yml](https://github.com/eea/eea.rancher.catalog/blob/master/templates/volto-ims/39/docker-compose.yml#L14-L20)
+  * [rancher-compose.yml](https://github.com/eea/eea.rancher.catalog/blob/master/templates/volto-ims/39/rancher-compose.yml#L33-L58)
+  * [auto_release.sh](https://github.com/eea/eea.rancher.catalog/blob/master/templates/volto-ims/auto_release.sh)
 
 ## Copyright and license
 
