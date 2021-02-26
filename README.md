@@ -30,7 +30,7 @@
    ],
 
    "dependencies": {
-       "@eeacms/volto-sentry-rancher-config": "^1.0.0"
+       "@eeacms/volto-sentry-rancher-config": "^2.0.0"
    }
    ```
 
