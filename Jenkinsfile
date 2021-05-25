@@ -189,6 +189,9 @@ pipeline {
 
   post {
     always {
+
+  post {
+    always {
       cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenSuccess: true, cleanWhenUnstable: true, deleteDirs: true)
     }
     changed {
@@ -202,12 +205,6 @@ pipeline {
         attachLog: true,
         compressLog: true,
         recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'CulpritsRecipientProvider']]
-        )
-      }
-    }
-  }
-}
-vider'], [$class: 'CulpritsRecipientProvider']]
         )
       }
     }
