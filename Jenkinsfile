@@ -186,10 +186,7 @@ pipeline {
     }
 
   }
-
-  post {
-    always {
-
+  
   post {
     always {
       cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenSuccess: true, cleanWhenUnstable: true, deleteDirs: true)
