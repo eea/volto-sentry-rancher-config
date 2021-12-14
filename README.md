@@ -1,8 +1,17 @@
 # volto-sentry-rancher-config
 [![Releases](https://img.shields.io/github/v/release/eea/volto-sentry-rancher-config)](https://github.com/eea/volto-sentry-rancher-config/releases)
-[![Pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto-addons%2Fvolto-sentry-rancher-config%2Fmaster&subject=master)](https://ci.eionet.europa.eu/view/Github/job/volto-addons/job/volto-sentry-rancher-config/job/master/display/redirect)
-[![Pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto-addons%2Fvolto-sentry-rancher-config%2Fdevelop&subject=develop)](https://ci.eionet.europa.eu/view/Github/job/volto-addons/job/volto-sentry-rancher-config/job/develop/display/redirect)
 
+[![Pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto-addons%2Fvolto-sentry-rancher-config%2Fmaster&subject=master)](https://ci.eionet.europa.eu/view/Github/job/volto-addons/job/volto-sentry-rancher-config/job/master/display/redirect)
+[![Lines of Code](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config-master&metric=ncloc)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config-master)
+[![Coverage](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config-master&metric=coverage)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config-master)
+[![Bugs](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config-master&metric=bugs)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config-master)
+[![Duplicated Lines (%)](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config-master&metric=duplicated_lines_density)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config-master)
+
+[![Pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto-addons%2Fvolto-sentry-rancher-config%2Fdevelop&subject=develop)](https://ci.eionet.europa.eu/view/Github/job/volto-addons/job/volto-sentry-rancher-config/job/develop/display/redirect)
+[![Lines of Code](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config-develop&metric=ncloc)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config-develop)
+[![Coverage](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config-develop&metric=coverage)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config-develop)
+[![Bugs](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config-develop&metric=bugs)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config-develop)
+[![Duplicated Lines (%)](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config-develop&metric=duplicated_lines_density)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config-develop)
 
 [Volto](https://github.com/plone/volto) add-on to auto-configure Sentry from Rancher metadata
 
