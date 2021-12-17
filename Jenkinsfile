@@ -4,7 +4,7 @@ pipeline {
   environment {
         GIT_NAME = "volto-sentry-rancher-config"
         NAMESPACE = "@eeacms"
-        SONARQUBE_TAGS = "volto.eea.europa.eu,climate-energy.eea.europa.eu,biodiversity.europa.eu,www.eea.europa.eu-ims,clms.land.copernicus.eu,sustainability.eionet.europa.eu,forest.eea.europa.eu,industry.eea.europa.eu"
+        SONARQUBE_TAGS = "volto.eea.europa.eu,climate-energy.eea.europa.eu,biodiversity.europa.eu,www.eea.europa.eu-ims,clms.land.copernicus.eu,sustainability.eionet.europa.eu,forest.eea.europa.eu,industry.eea.europa.eu,water.europa.eu-freshwater"
         DEPENDENCIES = ""
     }
 
