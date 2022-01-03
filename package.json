@@ -1,6 +1,6 @@
 {
   "name": "@eeacms/volto-sentry-rancher-config",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "volto-sentry-rancher-config: Volto add-on to auto-configure Sentry from Rancher metadata",
   "main": "src/index.js",
   "author": "European Environment Agency: IDM2 A-Team",
