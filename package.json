@@ -1,6 +1,6 @@
 {
   "name": "@eeacms/volto-sentry-rancher-config",
-  "version": "2.1.6",
+  "version": "3.0.0",
   "description": "volto-sentry-rancher-config: Volto add-on to auto-configure Sentry from Rancher metadata",
   "main": "src/index.js",
   "author": "European Environment Agency: IDM2 A-Team",
@@ -20,10 +20,9 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@cypress/code-coverage": "^3.10.0",
     "@plone/scripts": "*",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "md5": "^2.3.0"
+    "@cypress/code-coverage": "^3.10.0",
+    "babel-plugin-transform-class-properties": "^6.24.1"
   },
   "scripts": {
     "release": "release-it",
