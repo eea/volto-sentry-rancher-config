@@ -6,13 +6,14 @@ npm-debug.log*
 .DS_Store
 *.swp
 yarn-error.log
-
+.nyc_output
 node_modules
 build
 dist
 screenshots
 cypress/videos
 cypress/reports
+coverage
 .env.local
 .env.development.local
 .env.test.local
