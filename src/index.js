@@ -1,6 +1,7 @@
 import os from 'os';
 
 const applyConfig = (config) => {
+  const _sentryOptions = config.settings.sentryOptions;
   const sentryOptions = {
     environment: 'production',
     serverName: os.hostname(),
@@ -12,7 +13,7 @@ const applyConfig = (config) => {
     },
   };
 
-  if (config?.settings?.apiPath) {
+  if (config.settings.apiPath) {
     sentryOptions.tags.site = config.settings.apiPath
       .replace('/api', '')
       .replace('https://', '')
@@ -27,10 +28,14 @@ const applyConfig = (config) => {
     sentryOptions.environment = 'development';
   }
 
-  config.settings.sentryOptions = {
-    ...config.settings.sentryOptions,
-    ...sentryOptions,
-  };
+  config.settings.sentryOptions = _sentryOptions
+    ? (libraries) => ({
+        ..._sentryOptions(libraries),
+        ...sentryOptions,
+      })
+    : () => ({
+        ...sentryOptions,
+      });
 
   return config;
 };
