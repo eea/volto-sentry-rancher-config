@@ -20,6 +20,12 @@
 
 1. Auto-extract [Sentry options](https://docs.voltocms.com/deploying/sentry/#configuration-options) (tags, environment, etc.) from [Rancher Metadata](https://rancher.com/docs/rancher/v1.6/en/rancher-services/metadata-service/)
 
+## Deploying with Docker/Rancher
+
+* See [EEA Website Frontend](https://github.com/eea/eea.rancher.catalog/blob/master/templates/eea-website-frontend) Rancher Catalog template for integration example:
+  * [docker-compose.yml](https://github.com/eea/eea.rancher.catalog/blob/master/templates/eea-website-frontend/105/docker-compose.yml)
+  * [rancher-compose.yml](https://github.com/eea/eea.rancher.catalog/blob/master/templates/eea-website-frontend/105/rancher-compose.yml)
+
 ## Getting started
 
 ### Try volto-sentry-rancher-config with Docker
@@ -78,14 +84,7 @@ See [RELEASE.md](https://github.com/eea/volto-sentry-rancher-config/blob/master/
 
 ## How to contribute
 
-See [DEVELOP.md](https://github.com/eea/volto-sentry-rancher-config/blob/master/DEVELOP.md2).
-
-## Deploying with Docker/Rancher
-
-- See [Volto IMS](https://github.com/eea/eea.rancher.catalog/blob/master/templates/volto-ims) Rancher Catalog template for integration example:
-  - [docker-compose.yml](https://github.com/eea/eea.rancher.catalog/blob/master/templates/volto-ims/39/docker-compose.yml#L14-L20)
-  - [rancher-compose.yml](https://github.com/eea/eea.rancher.catalog/blob/master/templates/volto-ims/39/rancher-compose.yml#L33-L58)
-  - [auto_release.sh](https://github.com/eea/eea.rancher.catalog/blob/master/templates/volto-ims/auto_release.sh)
+See [DEVELOP.md](https://github.com/eea/volto-sentry-rancher-config/blob/master/DEVELOP.md).
 
 ## Copyright and license
 
