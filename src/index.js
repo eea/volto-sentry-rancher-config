@@ -1,30 +1,40 @@
-import os from 'os';
-
 const applyConfig = (config) => {
   const _sentryOptions = config.settings.sentryOptions;
+  let hostname = 'localhost';
+  let site = 'SSR';
+  if (__CLIENT__) {
+    hostname = window?.location?.hostname || hostname;
+    site = window?.env?.publicURL || window?.location?.host || site;
+  }
+  if (__SERVER__) {
+    hostname = require('os').hostname() || hostname;
+    site = process?.env?.publicURL || site;
+  }
+  site = (config?.settings?.publicURL || config?.settings?.apiPath || site)
+    .replace('/api', '')
+    .replace('https://', '')
+    .replace('http://', '');
+
   const sentryOptions = {
     environment: 'production',
-    serverName: os.hostname(),
+    serverName: hostname,
     logger: 'volto',
     tags: {
-      site: 'localhost',
+      site: site,
       logger: 'volto',
-      server_name: os.hostname(),
+      server_name: hostname,
     },
   };
 
-  if (config.settings.apiPath) {
-    sentryOptions.tags.site = config.settings.apiPath
-      .replace('/api', '')
-      .replace('https://', '')
-      .replace('http://', '');
-  }
-
-  if (sentryOptions.tags.site.includes('localhost')) {
+  if (site.includes('localhost')) {
     sentryOptions.environment = 'development';
   }
 
-  if (sentryOptions.tags.site.includes('dev')) {
+  if (site.includes('dev')) {
+    sentryOptions.environment = 'development';
+  }
+
+  if (site.includes('demo')) {
     sentryOptions.environment = 'development';
   }
 
