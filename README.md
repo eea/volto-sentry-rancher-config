@@ -3,16 +3,16 @@
 [![Releases](https://img.shields.io/github/v/release/eea/volto-sentry-rancher-config)](https://github.com/eea/volto-sentry-rancher-config/releases)
 
 [![Pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto-addons%2Fvolto-sentry-rancher-config%2Fmaster&subject=master)](https://ci.eionet.europa.eu/view/Github/job/volto-addons/job/volto-sentry-rancher-config/job/master/display/redirect)
-[![Lines of Code](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config-master&metric=ncloc)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config-master)
-[![Coverage](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config-master&metric=coverage)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config-master)
-[![Bugs](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config-master&metric=bugs)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config-master)
-[![Duplicated Lines (%)](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config-master&metric=duplicated_lines_density)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config-master)
+[![Lines of Code](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config&metric=ncloc)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config)
+[![Coverage](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config&metric=coverage)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config)
+[![Bugs](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config&metric=bugs)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config)
+[![Duplicated Lines (%)](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config&metric=duplicated_lines_density)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config)
 
 [![Pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto-addons%2Fvolto-sentry-rancher-config%2Fdevelop&subject=develop)](https://ci.eionet.europa.eu/view/Github/job/volto-addons/job/volto-sentry-rancher-config/job/develop/display/redirect)
-[![Lines of Code](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config-develop&metric=ncloc)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config-develop)
-[![Coverage](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config-develop&metric=coverage)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config-develop)
-[![Bugs](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config-develop&metric=bugs)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config-develop)
-[![Duplicated Lines (%)](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config-develop&metric=duplicated_lines_density)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config-develop)
+[![Lines of Code](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config&branch=develop&metric=ncloc)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config&branch=develop)
+[![Coverage](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config&branch=develop&metric=coverage)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config&branch=develop)
+[![Bugs](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config&branch=develop&metric=bugs)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config&branch=develop)
+[![Duplicated Lines (%)](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-sentry-rancher-config&branch=develop&metric=duplicated_lines_density)](https://sonarqube.eea.europa.eu/dashboard?id=volto-sentry-rancher-config&branch=develop)
 
 [Volto](https://github.com/plone/volto) add-on to auto-configure Sentry from Rancher metadata
 
@@ -37,6 +37,11 @@
 
 Go to http://localhost:3000
 
+`make start` now defaults to Volto 18. To run the same setup against Volto 17, use:
+
+      VOLTO_VERSION=17 make
+      VOLTO_VERSION=17 make start
+
 ### Add volto-sentry-rancher-config to your Volto project
 
 1. Make sure you have a [Plone backend](https://plone.org/download) up-and-running at http://localhost:8080/Plone
@@ -50,29 +55,38 @@ Go to http://localhost:3000
 * If you already have a volto project, just update `package.json`:
 
    ```JSON
-   "addons": [
-       "@eeacms/volto-sentry-rancher-config"
-   ],
-
    "dependencies": {
        "@eeacms/volto-sentry-rancher-config": "*"
    }
    ```
 
-* If not, create one:
+   and `volto.config.js`:
 
-   ```
-   npm install -g yo @plone/generator-volto
-   yo @plone/volto my-volto-project --canary --addon @eeacms/volto-sentry-rancher-config
-   cd my-volto-project
+   ```JavaScript
+   const addons = ['@eeacms/volto-sentry-rancher-config'];
    ```
 
-1. Install new add-ons and restart Volto:
+* If not, create one with Cookieplone, as recommended by the official Plone documentation for Volto 18+:
 
    ```
-   yarn
-   yarn start
+   uvx cookieplone project
+   cd project-title
    ```
+
+1. Install or update dependencies, then start the project:
+
+   ```
+   make install
+   ```
+
+   For a Cookieplone project, start the backend and frontend in separate terminals:
+
+   ```
+   make backend-start
+   make frontend-start
+   ```
+
+   For a legacy Volto 17 project, install the package with `yarn` and restart the frontend as usual.
 
 1. Go to http://localhost:3000
 
