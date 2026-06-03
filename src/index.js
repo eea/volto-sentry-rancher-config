@@ -2,15 +2,25 @@ const applyConfig = (config) => {
   const _sentryOptions = config.settings.sentryOptions;
   let hostname = 'localhost';
   let site = 'SSR';
+  // RAZZLE_PUBLIC_URL env var takes priority if set
+  let envPublicURL;
   if (__CLIENT__) {
     hostname = window?.location?.hostname || hostname;
-    site = window?.env?.publicURL || window?.location?.host || site;
+    envPublicURL = window?.env?.RAZZLE_PUBLIC_URL || window?.env?.publicURL;
+    site = envPublicURL || window?.location?.host || site;
   }
   if (__SERVER__) {
     hostname = require('os').hostname() || hostname;
-    site = process?.env?.publicURL || site;
+    envPublicURL = process?.env?.RAZZLE_PUBLIC_URL || process?.env?.publicURL;
+    site = envPublicURL || site;
   }
-  site = (config?.settings?.publicURL || config?.settings?.apiPath || site)
+  // If RAZZLE_PUBLIC_URL is set, it wins over per-request detectedHost overrides
+  site = (
+    envPublicURL ||
+    config?.settings?.publicURL ||
+    config?.settings?.apiPath ||
+    site
+  )
     .replace('/api', '')
     .replace('https://', '')
     .replace('http://', '');
