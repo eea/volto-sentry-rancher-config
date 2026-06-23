@@ -29,6 +29,12 @@ const applyConfig = (config) => {
     environment: 'production',
     serverName: hostname,
     logger: 'volto',
+    // Client-side equivalent of server-side ignoredErrors in server.jsx.
+    // Superagent creates errors with `new Error(res.statusText)` for non-OK
+    // responses. These are the HTTP status texts for codes we already silence
+    // on the server: 401, 404, 410 (301/302 are handled as redirects, not
+    // unhandled rejections, so they are excluded here).
+    ignoreErrors: [/^Unauthorized$/, /^Not Found$/, /^Gone$/],
     tags: {
       site: site,
       logger: 'volto',
