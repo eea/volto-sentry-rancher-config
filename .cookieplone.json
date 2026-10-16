@@ -1,0 +1,7 @@
+{
+  "title": "Sentry Rancher Config",
+  "frontend_addon_name": "volto-sentry-rancher-config",
+  "description": "volto-sentry-rancher-config: Volto add-on to auto-configure Sentry from Rancher metadata",
+  "volto_version": "19.3.0",
+  "__template__": "frontend_addon"
+}
