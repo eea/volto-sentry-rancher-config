@@ -1,3 +1,40 @@
+// Markers of frames that belong to browser extensions, WebViews or
+// translation proxies, not to our bundles (see docs/2026-11-02-sentry-triage).
+const NOISE_FRAME_MARKERS = [
+  'chrome-extension://',
+  'moz-extension://',
+  'safari-extension://',
+  'safari-web-extension://',
+  'webkit-masked-url',
+  'ext:core/',
+  'iabjs://',
+  '<leanwright:',
+];
+
+const NOISE_HOSTS = ['translate.goog'];
+
+const getFrames = (event) =>
+  (event?.exception?.values || []).flatMap(
+    (value) => value?.stacktrace?.frames || [],
+  );
+
+/**
+ * Drop events that come from extensions/WebViews/translation proxies.
+ * @param {Object} event Sentry event.
+ * @returns {boolean} True when the event should not be sent.
+ */
+export const isNoiseEvent = (event) => {
+  const host = event?.tags?.server_name || event?.request?.url || '';
+  if (NOISE_HOSTS.some((noiseHost) => host.includes(noiseHost))) {
+    return true;
+  }
+
+  return getFrames(event).some((frame) => {
+    const file = frame?.filename || frame?.abs_path || '';
+    return NOISE_FRAME_MARKERS.some((marker) => file.includes(marker));
+  });
+};
+
 const applyConfig = (config) => {
   const _sentryOptions = config.settings.sentryOptions;
   let hostname = 'localhost';
@@ -34,7 +71,20 @@ const applyConfig = (config) => {
     // responses. These are the HTTP status texts for codes we already silence
     // on the server: 401, 404, 410 (301/302 are handled as redirects, not
     // unhandled rejections, so they are excluded here).
-    ignoreErrors: [/^Unauthorized$/, /^Not Found$/, /^Gone$/],
+    ignoreErrors: [
+      /^Unauthorized$/,
+      /^Not Found$/,
+      /^Gone$/,
+      // Browser noise: layout loops, cancelled requests and unhandled
+      // non-Error rejections (Volto Api rejects with `{code, status, url}`).
+      /ResizeObserver loop/,
+      /^aborted$/,
+      /Request has been terminated/,
+      /Non-Error promise rejection captured/,
+      // DOM nodes moved by extensions or Google Translate.
+      /not a child of this node/,
+    ],
+    beforeSend: (event) => (isNoiseEvent(event) ? null : event),
     tags: {
       site: site,
       logger: 'volto',
