@@ -13,6 +13,11 @@ const NOISE_FRAME_MARKERS = [
 
 const NOISE_HOSTS = ['translate.goog'];
 
+// Superagent rejects with `new Error(response.statusText)` for any non-2xx
+// API response. 404 and 410 are expected answers here: the redirector returns
+// 410 for retired Plone 4 URLs, and crawlers keep asking for removed pages.
+const EXPECTED_API_STATUSES = [404, 410];
+
 const getFrames = (event) =>
   (event?.exception?.values || []).flatMap(
     (value) => value?.stacktrace?.frames || [],
@@ -33,6 +38,24 @@ export const isNoiseEvent = (event) => {
     const file = frame?.filename || frame?.abs_path || '';
     return NOISE_FRAME_MARKERS.some((marker) => file.includes(marker));
   });
+};
+
+/**
+ * Drop expected API errors: a 404/410 answered by the API is a valid response,
+ * not a bug. Only the generic `Unsuccessful HTTP response` error is dropped, so
+ * real errors (even when they happen to be 4xx/5xx) keep reaching Sentry.
+ * @param {Object} event Sentry event.
+ * @param {Object} hint Sentry event hint, carries the original exception.
+ * @returns {boolean} True when the event should not be sent.
+ */
+export const isExpectedApiError = (event, hint) => {
+  const error = hint?.originalException;
+  const message = event?.exception?.values?.[0]?.value;
+
+  return (
+    message === 'Unsuccessful HTTP response' &&
+    EXPECTED_API_STATUSES.includes(error?.status)
+  );
 };
 
 const applyConfig = (config) => {
@@ -84,7 +107,8 @@ const applyConfig = (config) => {
       // DOM nodes moved by extensions or Google Translate.
       /not a child of this node/,
     ],
-    beforeSend: (event) => (isNoiseEvent(event) ? null : event),
+    beforeSend: (event, hint) =>
+      isNoiseEvent(event) || isExpectedApiError(event, hint) ? null : event,
     tags: {
       site: site,
       logger: 'volto',
