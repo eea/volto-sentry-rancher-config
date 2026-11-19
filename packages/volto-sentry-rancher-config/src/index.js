@@ -1,5 +1,5 @@
 // Markers of frames that belong to browser extensions, WebViews or
-// translation proxies, not to our bundles (see docs/2026-11-02-sentry-triage).
+// translation proxies, not to our bundles (EEA `sentry-triage` skill).
 const NOISE_FRAME_MARKERS = [
   'chrome-extension://',
   'moz-extension://',
