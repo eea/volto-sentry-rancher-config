@@ -16,6 +16,27 @@
   * [docker-compose.yml](https://github.com/eea/eea.rancher.catalog/blob/master/templates/eea-website-frontend/105/docker-compose.yml)
   * [rancher-compose.yml](https://github.com/eea/eea.rancher.catalog/blob/master/templates/eea-website-frontend/105/rancher-compose.yml)
 
+## Upgrade
+
+### Upgrading to 7.x
+
+> This version requires `Volto 18` or `Volto 19` and Node.js 22.
+
+The add-on exports the same `applyConfig` default and the same `isNoiseEvent` and
+`isExpectedApiError` helpers, and the noise markers, ignored hosts and expected API statuses are
+unchanged, so a site upgrading from 6.x sees exactly the same events. The release adds Volto 19
+support and moves the repository to the Volto 19 layout, where the published package lives in
+`packages/volto-sentry-rancher-config`.
+
+#### Breaking changes
+
+- **Node.js 22 or newer is required** (`engines.node >= 22`), 6.x declared no engine.
+- **React 18 is required.** The package declares `react` and `react-dom` as `^18.2.0` peers, 6.x
+  declared no peers.
+- **The package no longer ships the repository tooling.** The Cypress and Jest setup and the Docker
+  files are gone, and the tests moved to Vitest next to the add-on, so nothing a site imports was
+  removed.
+
 ## Requirements
 
 ### Backend
